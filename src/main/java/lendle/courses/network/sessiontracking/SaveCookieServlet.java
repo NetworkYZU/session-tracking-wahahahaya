@@ -34,7 +34,11 @@ public class SaveCookieServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        //建立 cookie 並且儲存
+        //建立 cookie 並且儲存 // 紀錄長期資訊 ex.使用習慣
+        String food=request.getParameter("food");
+        Cookie cookie=new Cookie("food", food);
+        cookie.setMaxAge(24*60*60);
+        response.addCookie(cookie);
         ///////////////////////////////////////////////////////////////
         response.sendRedirect("cookie.jsp");
     }
